@@ -97,7 +97,7 @@ function createLIElements(location){
             newLIElement.textContent = (openingHour + i) + "pm: " + hourSoldCookies + " cookies";
         } else if(openingHour + i === 24){
             //12am
-            newLIElement.textContent = (openingHour + i - 6) + "pm: " + hourSoldCookies + " cookies";
+            newLIElement.textContent = (openingHour + i - 6) + "am: " + hourSoldCookies + " cookies";
         } else {
             //1pm-11pm
             newLIElement.textContent = (openingHour + i - 12) + "pm: " + hourSoldCookies + " cookies";
