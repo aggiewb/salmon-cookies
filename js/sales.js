@@ -43,7 +43,7 @@ var alki = {
     }
 };
 
-function calculateSimlatedCookiesPerHour(shopLocation){
+function calculateSimulatedCookiesPerHour(shopLocation){
     //using military time
     var openHours = 20 - 6;
     var simulatedCookiesPerHour = [];
@@ -53,8 +53,8 @@ function calculateSimlatedCookiesPerHour(shopLocation){
     return simulatedCookiesPerHour;
 }
 
-firstPike.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(firstPike);
-seatacAirport.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(seatacAirport);
-seattleCenter.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(seattleCenter);
-capitolHill.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(capitolHill);
-alki.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(alki);
+var cookieLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
+
+for(var i = 0; i < cookieLocations.length; i++){
+    cookieLocations[i].simulatedCookiesPerHour = calculateSimulatedCookiesPerHour(cookieLocations[i]);
+}
