@@ -42,3 +42,19 @@ var alki = {
         return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
     }
 };
+
+function calculateSimlatedCookiesPerHour(shopLocation){
+    //using military time
+    var openHours = 20 - 6;
+    var simulatedCookiesPerHour = [];
+    for(var i = 0; i < openHours; i++){
+        simulatedCookiesPerHour[i] = Math.floor(shopLocation.randomCustomersPerHour() * shopLocation.averageCookiesPerCustomer);
+    }
+    return simulatedCookiesPerHour;
+}
+
+firstPike.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(firstPike);
+seatacAirport.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(seatacAirport);
+seattleCenter.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(seattleCenter);
+capitolHill.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(capitolHill);
+alki.simulatedCookiesPerHour = calculateSimlatedCookiesPerHour(alki);
