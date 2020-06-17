@@ -90,10 +90,16 @@ function createLIElements(location){
         var newLIElement = document.createElement('li');
         var hourSoldCookies = location.simulatedCookiesPerHour[i];
         if(openingHour + i < 12){
+            //1am-11am
             newLIElement.textContent = (openingHour + i) + "am: " + hourSoldCookies + " cookies";
         } else if(openingHour + i === 12){
+            //12pm
             newLIElement.textContent = (openingHour + i) + "pm: " + hourSoldCookies + " cookies";
+        } else if(openingHour + i === 24){
+            //12am
+            newLIElement.textContent = (openingHour + i - 6) + "pm: " + hourSoldCookies + " cookies";
         } else {
+            //1pm-11pm
             newLIElement.textContent = (openingHour + i - 12) + "pm: " + hourSoldCookies + " cookies";
         }
         h2Element.append(newLIElement);
@@ -101,5 +107,3 @@ function createLIElements(location){
 }
 
 createStoreLocationHTMLSections();
-
-
