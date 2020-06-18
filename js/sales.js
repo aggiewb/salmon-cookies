@@ -76,22 +76,23 @@ function createHoursList(location, header){
 }
 
 function createHourItems(location, list){
+    //use military time
     var openingHour = 6;
+    var standardTimeOffSet = 12;
     for(var i = 0; i < location.simulatedCookiesPerHour.length; i++){
+        var militaryHour =  openingHour + i;
         var newHourItem = document.createElement('li');
         var hourSoldCookies = location.simulatedCookiesPerHour[i];
-        if(openingHour + i < 12){
+        if(militaryHour < 12){
             //1am-11am
-            newHourItem.textContent = (openingHour + i) + "am: " + hourSoldCookies + " cookies";
-        } else if(openingHour + i === 12){
-            //12pm
-            newHourItem.textContent = (openingHour + i) + "pm: " + hourSoldCookies + " cookies";
-        } else if(openingHour + i === 24){
-            //12am
-            newHourItem.textContent = (openingHour + i - 6) + "am: " + hourSoldCookies + " cookies";
+            newHourItem.textContent = militaryHour + "am: " + hourSoldCookies + " cookies";
+        } else if(militaryHour === 12){
+            newHourItem.textContent = "12pm: " + hourSoldCookies + " cookies";
+        } else if(militaryHour === 24){
+            newHourItem.textContent = "12am: " + hourSoldCookies + " cookies";
         } else {
             //1pm-11pm
-            newHourItem.textContent = (openingHour + i - 12) + "pm: " + hourSoldCookies + " cookies";
+            newHourItem.textContent = (militaryHour - standardTimeOffSet) + "pm: " + hourSoldCookies + " cookies";
         }
         list.append(newHourItem);
     }
