@@ -71,7 +71,7 @@ function createStoreHeader(location){
 
 function createHoursList(location, header){
     var newHoursList = document.createElement('ul');
-    header.insertAdjacentElement('afterend', newHoursList);
+    document.body.appendChild(newHoursList);
     return newHoursList;
 }
 
