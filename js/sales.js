@@ -56,46 +56,44 @@ function createStoreLocationHTMLSections(locations){
     for(var i = 0; i < locations.length; i++){
         var location = locations[i];
         location.simulatedCookiesPerHour = calculateSimulatedCookiesPerHour(location);
-        var header = createH2Element(location);
-        createULElement(location, header);
-        createLIElements(location);
+        var header = createStoreHeader(location);
+        var hoursList = createHoursList(location, header);
+        createHourItems(location, hoursList);
     }
 }
 
-function createH2Element(location){
-    var newH2Element = document.createElement('h2');
-    newH2Element.setAttribute('class', location.name.replaceAll(" ", "-"));
-    newH2Element.textContent = location.name;
-    document.querySelector('body').append(newH2Element);
-    return newH2Element;
+function createStoreHeader(location){
+    var newHeader = document.createElement('h2');
+    newHeader.textContent = location.name;
+    document.querySelector('body').append(newHeader);
+    return newHeader;
 }
 
-function createULElement(location, header){
-    var newULElement = document.createElement('ul');
-    newULElement.setAttribute('class', location.name.replaceAll(" ", "-"));
-    header.insertAdjacentElement('afterend', newULElement);
+function createHoursList(location, header){
+    var newHoursList = document.createElement('ul');
+    header.insertAdjacentElement('afterend', newHoursList);
+    return newHoursList;
 }
 
-function createLIElements(location){
-    var h2Element = document.getElementsByClassName(location.name.replaceAll(" ", "-"))[1];
+function createHourItems(location, list){
     var openingHour = 6;
     for(var i = 0; i < location.simulatedCookiesPerHour.length; i++){
-        var newLIElement = document.createElement('li');
+        var newHourItem = document.createElement('li');
         var hourSoldCookies = location.simulatedCookiesPerHour[i];
         if(openingHour + i < 12){
             //1am-11am
-            newLIElement.textContent = (openingHour + i) + "am: " + hourSoldCookies + " cookies";
+            newHourItem.textContent = (openingHour + i) + "am: " + hourSoldCookies + " cookies";
         } else if(openingHour + i === 12){
             //12pm
-            newLIElement.textContent = (openingHour + i) + "pm: " + hourSoldCookies + " cookies";
+            newHourItem.textContent = (openingHour + i) + "pm: " + hourSoldCookies + " cookies";
         } else if(openingHour + i === 24){
             //12am
-            newLIElement.textContent = (openingHour + i - 6) + "am: " + hourSoldCookies + " cookies";
+            newHourItem.textContent = (openingHour + i - 6) + "am: " + hourSoldCookies + " cookies";
         } else {
             //1pm-11pm
-            newLIElement.textContent = (openingHour + i - 12) + "pm: " + hourSoldCookies + " cookies";
+            newHourItem.textContent = (openingHour + i - 12) + "pm: " + hourSoldCookies + " cookies";
         }
-        h2Element.append(newLIElement);
+        list.append(newHourItem);
     }
 }
 
