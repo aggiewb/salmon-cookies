@@ -87,18 +87,19 @@
             var hourSoldCookies = location.simulatedCookiesPerHour[i];
             if(militaryHour < 12){
                 //1am-11am
-                newHourItem.textContent = militaryHour + "am: " + hourSoldCookies + " cookies";
+                newHourItem.textContent = militaryHour + 'am: ' + hourSoldCookies + " cookies";
             } else if(militaryHour === 12){
-                newHourItem.textContent = "12pm: " + hourSoldCookies + " cookies";
+                newHourItem.textContent = '12pm: ' + hourSoldCookies + ' cookies';
             } else if(militaryHour === 24){
-                newHourItem.textContent = "12am: " + hourSoldCookies + " cookies";
+                newHourItem.textContent = '12am: ' + hourSoldCookies + ' cookies';
             } else {
                 //1pm-11pm
-                newHourItem.textContent = (militaryHour - standardTimeOffSet) + "pm: " + hourSoldCookies + " cookies";
+                newHourItem.textContent = (militaryHour - standardTimeOffSet) + 'pm: ' + hourSoldCookies + ' cookies';
             }
             list.append(newHourItem);
         }
     }
 
     createStoreLocationHTMLSections(cookieLocations);
+ 
 })();
