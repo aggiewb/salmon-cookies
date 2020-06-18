@@ -58,9 +58,8 @@
         for(var i = 0; i < locations.length; i++){
             var location = locations[i];
             location.simulatedCookiesPerHour = calculateSimulatedCookiesPerHour(location);
-            var header = createStoreHeader(location);
-            var hoursList = createHoursList(location, header);
-            createHourItems(location, hoursList);
+            createStoreHeader(location);
+            createHourItems(location, createHoursList());
         }
     }
 
@@ -71,7 +70,7 @@
         return newHeader;
     }
 
-    function createHoursList(location, header){
+    function createHoursList(){
         var newHoursList = document.createElement('ul');
         document.body.appendChild(newHoursList);
         return newHoursList;
