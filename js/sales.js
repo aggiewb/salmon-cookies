@@ -56,8 +56,8 @@ function createStoreLocationHTMLSections(locations){
     for(var i = 0; i < locations.length; i++){
         var location = locations[i];
         location.simulatedCookiesPerHour = calculateSimulatedCookiesPerHour(location);
-        createH2Element(location);
-        createULElement(location);
+        var header = createH2Element(location);
+        createULElement(location, header);
         createLIElements(location);
     }
 }
@@ -67,13 +67,13 @@ function createH2Element(location){
     newH2Element.setAttribute('class', location.name.replaceAll(" ", "-"));
     newH2Element.textContent = location.name;
     document.querySelector('body').append(newH2Element);
+    return newH2Element;
 }
 
-function createULElement(location){
-    var h2Element = document.getElementsByClassName(location.name.replaceAll(" ", "-"))[0];
+function createULElement(location, header){
     var newULElement = document.createElement('ul');
     newULElement.setAttribute('class', location.name.replaceAll(" ", "-"));
-    h2Element.insertAdjacentElement('afterend', newULElement);
+    header.insertAdjacentElement('afterend', newULElement);
 }
 
 function createLIElements(location){
