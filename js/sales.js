@@ -65,7 +65,7 @@ function createStoreLocationHTMLSections(locations){
 function createStoreHeader(location){
     var newHeader = document.createElement('h2');
     newHeader.textContent = location.name;
-    document.querySelector('body').append(newHeader);
+    document.body.appendChild(newHeader);
     return newHeader;
 }
 
