@@ -1,5 +1,6 @@
 # salmon-cookies
 
+
 ## Branch Naming Guide
 ### For feature branches
 feature/_issue number_-_short\_description_
