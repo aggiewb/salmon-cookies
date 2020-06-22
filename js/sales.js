@@ -5,6 +5,11 @@
         this.minHourlyCustomers = minHourlyCustomers;
         this.maxHourlyCustomers = maxHourlyCustomers;
         this.averageCookiesPerCustomer = averageCookiesPerCustomer;
+        this.simulatedCookiesPerHour = null;
+    }
+
+    CookieStore.prototype.randomCustomersPerHour = function() {
+        return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
     }
 
     var firstPike = new CookieStore('1st and Pike', 23, 65, 6.3);
@@ -13,15 +18,7 @@
     var capitolHill = new CookieStore('Capitol Hill', 20, 38, 2.3);
     var alki = new CookieStore('Alki', 2, 16, 4.6);
 
-    var cookieLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
-
-    function randomCustomersPerHour() {
-        return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
-    }
-
-    cookieLocations.forEach(function(location){
-        location.randomCustomersPerHour = randomCustomersPerHour;
-    })
+    var cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
 
     function calculateSimulatedCookiesPerHour(location){
         var openHours = 14;
@@ -77,6 +74,6 @@
         }
     }
 
-    createStoreLocationHTMLSections(cookieLocations);
+    createStoreLocationHTMLSections(cookieStoreLocations);
  
 })();
