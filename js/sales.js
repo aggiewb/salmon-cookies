@@ -1,49 +1,24 @@
 (function(){
     'use strict';
-    var firstPike = {
-        name: '1st and Pike',
-        minHourlyCustomers: 23,
-        maxHourlyCustomers: 65,
-        averageCookiesPerCustomer: 6.3,
-    };
+    function CookieStore(name, minHourlyCustomers, maxHourlyCustomers, averageCookiesPerCustomer){
+        this.name = name;
+        this.minHourlyCustomers = minHourlyCustomers;
+        this.maxHourlyCustomers = maxHourlyCustomers;
+        this.averageCookiesPerCustomer = averageCookiesPerCustomer;
+        this.simulatedCookiesPerHour = [];
+    }
 
-    var seatacAirport = {
-        name: 'SeaTac Airport',
-        minHourlyCustomers: 3,
-        maxHourlyCustomers: 24,
-        averageCookiesPerCustomer: 1.2,
-    };
-
-    var seattleCenter = {
-        name: 'Seattle Center',
-        minHourlyCustomers: 11,
-        maxHourlyCustomers: 38,
-        averageCookiesPerCustomer: 3.7, 
-    };
-
-    var capitolHill = {
-        name: 'Capitol Hill',
-        minHourlyCustomers: 20,
-        maxHourlyCustomers: 38,
-        averageCookiesPerCustomer: 2.3, 
-    };
-
-    var alki = {
-        name: 'Alki',
-        minHourlyCustomers: 2,
-        maxHourlyCustomers: 16,
-        averageCookiesPerCustomer: 4.6, 
-    };
-
-    var cookieLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
-
-    function randomCustomersPerHour() {
+    CookieStore.prototype.randomCustomersPerHour = function() {
         return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
     }
 
-    cookieLocations.forEach(function(location){
-        location.randomCustomersPerHour = randomCustomersPerHour;
-    })
+    var firstPike = new CookieStore('1st and Pike', 23, 65, 6.3);
+    var seatacAirport = new CookieStore('SeaTac Airport', 3, 24, 1.2);
+    var seattleCenter = new CookieStore('Seattle Center', 11, 38, 3.7);
+    var capitolHill = new CookieStore('Capitol Hill', 20, 38, 2.3);
+    var alki = new CookieStore('Alki', 2, 16, 4.6);
+
+    var cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
 
     function calculateSimulatedCookiesPerHour(location){
         var openHours = 14;
@@ -99,6 +74,6 @@
         }
     }
 
-    createStoreLocationHTMLSections(cookieLocations);
+    createStoreLocationHTMLSections(cookieStoreLocations);
  
 })();
