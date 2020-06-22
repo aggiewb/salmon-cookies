@@ -5,7 +5,7 @@
         this.minHourlyCustomers = minHourlyCustomers;
         this.maxHourlyCustomers = maxHourlyCustomers;
         this.averageCookiesPerCustomer = averageCookiesPerCustomer;
-        this.simulatedCookiesPerHour = null;
+        this.simulatedCookiesPerHour = [];
     }
 
     CookieStore.prototype.randomCustomersPerHour = function() {
