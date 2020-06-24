@@ -24,7 +24,7 @@
         var openHours = 14;
         var simulatedCookiesPerHour = [];
         for(var i = 0; i < openHours; i++){
-            simulatedCookiesPerHour[i] = Math.floor(location.randomCustomersPerHour() * location.averageCookiesPerCustomer);
+            location.simulatedCookiesPerHour[i] = Math.floor(location.randomCustomersPerHour() * location.averageCookiesPerCustomer);
         }
         return simulatedCookiesPerHour;
     }
@@ -32,7 +32,7 @@
     function createStoreLocationHTMLSections(locations){
         for(var i = 0; i < locations.length; i++){
             var location = locations[i];
-            location.simulatedCookiesPerHour = calculateSimulatedCookiesPerHour(location);
+            calculateSimulatedCookiesPerHour(location);
             createStoreHeader(location);
             createHourItems(location, createHoursList());
         }
@@ -74,6 +74,32 @@
         }
     }
 
+    function createHoursRow(){
+        //use military time
+        var openingHour = 6;
+        var standardTimeOffSet = 12;
+        var hoursOpen = 14;
+        var tableRow = document.createElement('tr');
+        document.querySelector('thead').appendChild(tableRow);
+        for(var i = 0;i < hoursOpen; i++){
+            var newHourHead = document.createElement('th');
+            var militaryHour = openingHour + i;
+            if(militaryHour < 12){
+                //1am-11am
+                newHourHead.textContent = militaryHour + ':00am';
+            } else if(militaryHour === 12){
+                newHourHead.textContent = '12:00pm';
+            } else if(militaryHour === 24){
+                newHourHead.textContent = '12:00am';
+            } else {
+                //1pm-11pm
+                newHourHead.textContent = (militaryHour - standardTimeOffSet) + ':00pm';
+            }
+            tableRow.appendChild(newHourHead);
+        }
+    }
+
     createStoreLocationHTMLSections(cookieStoreLocations);
+    createHoursRow();
  
 })();
