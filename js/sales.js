@@ -30,6 +30,7 @@
     }
 
     function createStoreTableContents(){
+        document.querySelector('caption').textContent = 'Cookies Needed By Location Each Day';
         createHoursRow();
         for(var i = 0; i < cookieStoreLocations.length; i++){
             createStoreRow(cookieStoreLocations[i]);
@@ -84,7 +85,7 @@
     function createTotalsRow(){
         var totalsRow = document.createElement('tr');
         var totalsHead = document.createElement('th');
-        totalsHead.textContent = "Totals";
+        totalsHead.textContent = 'Totals';
         document.querySelector('tbody').appendChild(totalsRow);
         totalsRow.appendChild(totalsHead);
 
