@@ -34,6 +34,7 @@
         for(var i = 0; i < cookieStoreLocations.length; i++){
             createStoreRow(cookieStoreLocations[i]);
         }
+        createTotalsRow();
     }
 
     function createHoursRow(){
@@ -80,6 +81,24 @@
         }
     }
 
+    function createTotalsRow(){
+        var totalsRow = document.createElement('tr');
+        var totalsHead = document.createElement('th');
+        totalsHead.textContent = "Totals";
+        document.querySelector('tbody').appendChild(totalsRow);
+        totalsRow.appendChild(totalsHead);
+
+        for(var i = 0; i < cookieStoreLocations[0].simulatedCookiesPerHour.length; i++){
+            var total = 0;
+            for(var j = 0; j < cookieStoreLocations.length; j++){
+                total += cookieStoreLocations[j].simulatedCookiesPerHour[i];
+            }
+            var tableTotalData = document.createElement('td');
+            tableTotalData.textContent = total;
+            totalsRow.appendChild(tableTotalData);
+        }
+    }
+
     createStoreTableContents();
-    
+
 })();
