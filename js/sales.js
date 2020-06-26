@@ -29,24 +29,29 @@
         return simulatedCookiesPerHour;
     }
 
+    function createStoreTableContents(){
+        createHoursRow();
+        for(var i = 0; i < cookieStoreLocations.length; i++){
+            createStoreRow(cookieStoreLocations[i]);
+        }
+    }
+
     function createHoursRow(){
         //use military time
         var openingHour = 6;
         var standardTimeOffSet = 12;
         var hoursOpen = 14;
         
-        var tableRow = document.createElement('tr');
+        var tableRow = document.createElement('tr');    
         document.querySelector('thead').appendChild(tableRow);
-
-        var blankTH = document.createElement('th');
-        tableRow.appendChild(blankTH);
+        tableRow.appendChild(document.createElement('th'));
 
         for(var i = 0; i < hoursOpen; i++){
             var newHourHead = document.createElement('th');
             var militaryHour = openingHour + i;
             if(militaryHour === 12){
                 newHourHead.textContent = '12:00pm';
-            } else if(militaryHour === 0){
+            } else if(militaryHour === 24 || militaryHour === 0){
                 newHourHead.textContent = '12:00am';
             } else if(militaryHour < 12){
                 //1am-11am
@@ -59,6 +64,22 @@
         }
     }
 
-    createHoursRow();
- 
+    function createStoreRow(location){
+        var tableStoreRow = document.createElement('tr');
+        var tableStoreHead = document.createElement('th');
+        tableStoreHead.textContent = location.name;
+        document.querySelector('tbody').appendChild(tableStoreRow);
+        tableStoreRow.appendChild(tableStoreHead);
+
+        calculateSimulatedCookiesPerHour(location);
+        
+        for(var i = 0; i < location.simulatedCookiesPerHour.length; i++){
+            var tableStoreData = document.createElement('td');
+            tableStoreData.textContent = location.simulatedCookiesPerHour[i];
+            tableStoreRow.appendChild(tableStoreData);
+        }
+    }
+
+    createStoreTableContents();
+    
 })();
