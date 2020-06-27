@@ -15,15 +15,15 @@
     var alki = new CookieStore('Alki', 2, 16, 4.6);
 
     var cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
+    var OPEN_HOURS = 14;
 
     CookieStore.prototype.randomCustomersPerHour = function(){
         return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
     }
 
     CookieStore.prototype.calculateSimulatedCookiesPerHour = function(){
-        var openHours = 14;
-        for(var i = 0; i < openHours; i++){
-            this.simulatedCookiesPerHour[i] = Math.floor(this.randomCustomersPerHour() * this.averageCookiesPerCustomer);
+        for(var i = 0; i < OPEN_HOURS; i++){
+            this.simulatedCookiesPerHour.push(Math.floor(this.randomCustomersPerHour() * this.averageCookiesPerCustomer));
         }
     }
 
@@ -63,7 +63,6 @@
         //use military time
         var openingHour = 6;
         var standardTimeOffSet = 12;
-        var hoursOpen = 14;
         
         var tableRow = document.createElement('tr');    
         document.querySelector('thead').appendChild(tableRow);
@@ -71,7 +70,7 @@
         locationHeader.textContent = 'Store Locations';
         tableRow.appendChild(locationHeader);
 
-        for(var i = 0; i < hoursOpen; i++){
+        for(var i = 0; i < OPEN_HOURS; i++){
             var newHourHead = document.createElement('th');
             newHourHead.setAttribute('scope', 'col');
             var militaryHour = openingHour + i;
