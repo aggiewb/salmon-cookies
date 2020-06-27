@@ -69,8 +69,8 @@
         var openingHour = 6;
         var standardTimeOffSet = 12;
         
-        var tableRow = document.createElement('tr');    
-        tableRow.appendChild(createDataCell('Store Locations', 'th', 'col'));
+        var tableRow = document.createElement('tr'); 
+        tableRow.appendChild(createDataCell('', 'th', 'col')).setAttribute('id', 'store-locations');
 
         for(var i = 0; i < OPEN_HOURS; i++){
             var am = ':00am';
