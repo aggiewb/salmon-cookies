@@ -64,7 +64,6 @@
         var standardTimeOffSet = 12;
         
         var tableRow = document.createElement('tr');    
-        document.querySelector('thead').appendChild(tableRow);
         var locationHeader = document.createElement('th');
         locationHeader.textContent = 'Store Locations';
         tableRow.appendChild(locationHeader);
@@ -86,6 +85,7 @@
             }
             tableRow.appendChild(newHourHead);
         }
+        document.querySelector('thead').appendChild(tableRow);
         return tableRow;
     }
 
