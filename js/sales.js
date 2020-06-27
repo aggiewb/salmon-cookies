@@ -64,8 +64,7 @@
             storeTableRow.appendChild(createDataCell(total));
         }
         var totalsRow = createTotalsFooterRow();
-
-        totalOfAllStoresDaily(totalsRow, allStoresTotal);
+        totalsRow.appendChild(createDataCell(allStoresTotal));
     }
 
     function createHoursHeadRow(){
@@ -132,12 +131,6 @@
         dailyLocationTotal.setAttribute('scope', 'col');
         dailyLocationTotal.textContent = 'Daily Location Total';
         tableRow.appendChild(dailyLocationTotal);
-    }
-
-    function totalOfAllStoresDaily(tableRow, allStoresTotal){
-        var totalOfAllStoresDailyTableData = document.createElement('td');
-        totalOfAllStoresDailyTableData.textContent = allStoresTotal;
-        tableRow.appendChild(totalOfAllStoresDailyTableData);
     }
 
     createStoreTableContents();
