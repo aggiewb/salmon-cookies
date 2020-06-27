@@ -12,7 +12,7 @@ table {
 
 table, th, td, tr {
     border: 1px #773344 solid;
-    padding: 30px 15px;
+    padding: 1.875rem 0.9375rem; /* 30px 15px */
 }
 
 tr:nth-child(even), tfoot{
