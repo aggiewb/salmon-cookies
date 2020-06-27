@@ -57,6 +57,7 @@
 
         for(var i = 0; i < hoursOpen; i++){
             var newHourHead = document.createElement('th');
+            newHourHead.setAttribute('scope', 'col');
             var militaryHour = openingHour + i;
             if(militaryHour === 12){
                 newHourHead.textContent = '12:00pm';
@@ -76,6 +77,7 @@
 
     CookieStore.prototype.render = function(){
         var tableStoreRow = document.createElement('tr');
+        tableStoreRow.setAttribute('scope', 'row');
         var tableStoreHead = document.createElement('th');
         tableStoreHead.textContent = this.name;
         document.querySelector('tbody').appendChild(tableStoreRow);
@@ -93,6 +95,7 @@
 
     function createTotalsFooterRow(){
         var totalsRow = document.createElement('tr');
+        totalsRow.setAttribute('scope', 'row');
         var totalsHead = document.createElement('th');
         totalsHead.textContent = 'Totals';
         document.querySelector('tfoot').appendChild(totalsRow);
@@ -123,6 +126,7 @@
 
     function createDailyLocationTotalHeader(tableRow){
         var dailyLocationTotal = document.createElement('th');
+        dailyLocationTotal.setAttribute('scope', 'col');
         dailyLocationTotal.textContent = 'Daily Location Total';
         tableRow.appendChild(dailyLocationTotal);
     }
