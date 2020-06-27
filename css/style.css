@@ -1,3 +1,7 @@
+body {
+    color: #0B0014;
+}
+
 ul {
     list-style-type: circle;
 }
@@ -7,6 +11,10 @@ table {
 }
 
 table, th, td, tr {
-    border: 1px lightgray solid;
+    border: 1px #773344 solid;
     padding: 30px 15px;
+}
+
+tr:nth-child(even), tfoot{
+    background-color: #E3B5A4;
 }
