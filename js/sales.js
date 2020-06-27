@@ -31,19 +31,19 @@
 
     function createStoreTableContents(){
         document.querySelector('caption').textContent = 'Cookies Needed By Location Each Day';
-        var hoursTableRow = createHoursRow();
+        var hoursTableRow = createHoursHeadRow();
         createDailyLocationTotalHeader(hoursTableRow);
         
         var allStoresTotal = 0;
         for(var i = 0; i < cookieStoreLocations.length; i++){
-            var storeTableRow = createStoreRow(cookieStoreLocations[i]);
+            var storeTableRow = cookieStoreLocations[i].render();
             allStoresTotal += createStoreTotals(cookieStoreLocations[i], storeTableRow);
         }
-        var totalsRow = createTotalsRow();
+        var totalsRow = createTotalsFooterRow();
         totalOfAllStoresDaily(totalsRow, allStoresTotal);
     }
 
-    function createHoursRow(){
+    function createHoursHeadRow(){
         //use military time
         var openingHour = 6;
         var standardTimeOffSet = 12;
@@ -72,28 +72,28 @@
         return tableRow;
     }
 
-    function createStoreRow(location){
+    CookieStore.prototype.render = function(){
         var tableStoreRow = document.createElement('tr');
         var tableStoreHead = document.createElement('th');
-        tableStoreHead.textContent = location.name;
+        tableStoreHead.textContent = this.name;
         document.querySelector('tbody').appendChild(tableStoreRow);
         tableStoreRow.appendChild(tableStoreHead);
 
-        calculateSimulatedCookiesPerHour(location);
+        calculateSimulatedCookiesPerHour(this);
         
-        for(var i = 0; i < location.simulatedCookiesPerHour.length; i++){
+        for(var i = 0; i < this.simulatedCookiesPerHour.length; i++){
             var tableStoreData = document.createElement('td');
-            tableStoreData.textContent = location.simulatedCookiesPerHour[i];
+            tableStoreData.textContent = this.simulatedCookiesPerHour[i];
             tableStoreRow.appendChild(tableStoreData);
         }
         return tableStoreRow;
     }
 
-    function createTotalsRow(){
+    function createTotalsFooterRow(){
         var totalsRow = document.createElement('tr');
         var totalsHead = document.createElement('th');
         totalsHead.textContent = 'Totals';
-        document.querySelector('tbody').appendChild(totalsRow);
+        document.querySelector('tfoot').appendChild(totalsRow);
         totalsRow.appendChild(totalsHead);
 
         for(var i = 0; i < cookieStoreLocations[0].simulatedCookiesPerHour.length; i++){
