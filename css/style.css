@@ -23,3 +23,7 @@ tbody th, tfoot th {
 tr:nth-child(even), .highlight{
     background-color: #f6f8fa;
 }
+
+#store-locations {
+    text-indent: -10000px;
+}
