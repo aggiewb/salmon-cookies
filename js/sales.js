@@ -106,7 +106,11 @@
             }
             totalsRow.appendChild(createDataCell(total, 'td'));
         }
-        document.querySelector('tfoot').appendChild(totalsRow);
+        var tfoot = document.querySelector('tfoot');
+        tfoot.appendChild(totalsRow);
+        if(cookieStoreLocations.length % 2 !== 0){
+            tfoot.setAttribute('class', 'highlight');
+        }
         return totalsRow;
     }
 
