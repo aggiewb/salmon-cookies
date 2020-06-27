@@ -46,7 +46,6 @@
     }
 
     function createStoreTableContents(){
-        document.querySelector('caption').textContent = 'Cookies Needed By Location Each Day';
         var hoursTableRow = createHoursHeadRow();
         createDailyLocationTotalHeader(hoursTableRow);
         
