@@ -95,8 +95,8 @@
 
     function createTotalsFooterRow(){
         var totalsRow = document.createElement('tr');
-        totalsRow.setAttribute('scope', 'row');
         var totalsHead = document.createElement('th');
+        totalsHead.setAttribute('scope', 'row');
         totalsHead.textContent = 'Totals';
         document.querySelector('tfoot').appendChild(totalsRow);
         totalsRow.appendChild(totalsHead);
