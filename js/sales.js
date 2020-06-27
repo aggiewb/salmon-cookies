@@ -31,11 +31,16 @@
 
     function createStoreTableContents(){
         document.querySelector('caption').textContent = 'Cookies Needed By Location Each Day';
-        createHoursRow();
+        var hoursTableRow = createHoursRow();
+        createDailyLocationTotalHeader(hoursTableRow);
+        
+        var allStoresTotal = 0;
         for(var i = 0; i < cookieStoreLocations.length; i++){
-            createStoreRow(cookieStoreLocations[i]);
+            var storeTableRow = createStoreRow(cookieStoreLocations[i]);
+            allStoresTotal += createStoreTotals(cookieStoreLocations[i], storeTableRow);
         }
-        createTotalsRow();
+        var totalsRow = createTotalsRow();
+        totalOfAllStoresDaily(totalsRow, allStoresTotal);
     }
 
     function createHoursRow(){
@@ -64,6 +69,7 @@
             }
             tableRow.appendChild(newHourHead);
         }
+        return tableRow;
     }
 
     function createStoreRow(location){
@@ -80,6 +86,7 @@
             tableStoreData.textContent = location.simulatedCookiesPerHour[i];
             tableStoreRow.appendChild(tableStoreData);
         }
+        return tableStoreRow;
     }
 
     function createTotalsRow(){
@@ -98,6 +105,30 @@
             tableTotalData.textContent = total;
             totalsRow.appendChild(tableTotalData);
         }
+        return totalsRow;
+    }
+
+    function createStoreTotals(location, tableRow){
+        var total = 0;
+        for(var i = 0; i < location.simulatedCookiesPerHour.length; i++){
+            total += location.simulatedCookiesPerHour[i];
+        }
+        var tableStoreTotalData = document.createElement('td');
+        tableStoreTotalData.textContent = total;
+        tableRow.appendChild(tableStoreTotalData);
+        return total;
+    }
+
+    function createDailyLocationTotalHeader(tableRow){
+        var dailyLocationTotal = document.createElement('th');
+        dailyLocationTotal.textContent = 'Daily Location Total';
+        tableRow.appendChild(dailyLocationTotal);
+    }
+
+    function totalOfAllStoresDaily(tableRow, allStoresTotal){
+        var totalOfAllStoresDailyTableData = document.createElement('td');
+        totalOfAllStoresDailyTableData.textContent = allStoresTotal;
+        tableRow.appendChild(totalOfAllStoresDailyTableData);
     }
 
     createStoreTableContents();
