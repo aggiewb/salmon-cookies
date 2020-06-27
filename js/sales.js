@@ -38,11 +38,17 @@
         this.calculateSimulatedCookiesPerHour();
         
         for(var i = 0; i < this.simulatedCookiesPerHour.length; i++){
-            var tableStoreData = document.createElement('td');
-            tableStoreData.textContent = this.simulatedCookiesPerHour[i];
-            tableStoreRow.appendChild(tableStoreData);
+            tableStoreRow.appendChild(createDataCell(this.simulatedCookiesPerHour[i]));
         }
         return tableStoreRow;
+    }
+
+    CookieStore.prototype.calculateStoreTotal = function(){
+        var total = 0;
+        for(var i = 0; i < this.simulatedCookiesPerHour.length; i++){
+            total += this.simulatedCookiesPerHour[i];
+        }
+        return total;
     }
 
     function createStoreTableContents(){
@@ -51,10 +57,14 @@
         
         var allStoresTotal = 0;
         for(var i = 0; i < cookieStoreLocations.length; i++){
-            var storeTableRow = cookieStoreLocations[i].render();
-            allStoresTotal += createStoreTotals(cookieStoreLocations[i], storeTableRow);
+            var store = cookieStoreLocations[i];
+            var storeTableRow = store.render();
+            var total = store.calculateStoreTotal();
+            allStoresTotal += total;
+            storeTableRow.appendChild(createDataCell(total));
         }
         var totalsRow = createTotalsFooterRow();
+
         totalOfAllStoresDaily(totalsRow, allStoresTotal);
     }
 
@@ -106,22 +116,15 @@
             for(var j = 0; j < cookieStoreLocations.length; j++){
                 total += cookieStoreLocations[j].simulatedCookiesPerHour[i];
             }
-            var tableTotalData = document.createElement('td');
-            tableTotalData.textContent = total;
-            totalsRow.appendChild(tableTotalData);
+            totalsRow.appendChild(createDataCell(total));
         }
         return totalsRow;
     }
 
-    function createStoreTotals(location, tableRow){
-        var total = 0;
-        for(var i = 0; i < location.simulatedCookiesPerHour.length; i++){
-            total += location.simulatedCookiesPerHour[i];
-        }
-        var tableStoreTotalData = document.createElement('td');
-        tableStoreTotalData.textContent = total;
-        tableRow.appendChild(tableStoreTotalData);
-        return total;
+    function createDataCell(textContent){
+        var dataCell = document.createElement('td');
+        dataCell.textContent = textContent;
+        return dataCell;
     }
 
     function createDailyLocationTotalHeader(tableRow){
