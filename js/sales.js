@@ -29,8 +29,8 @@
 
     CookieStore.prototype.render = function(){
         var tableStoreRow = document.createElement('tr');
-        tableStoreRow.setAttribute('scope', 'row');
         var tableStoreHead = document.createElement('th');
+        tableStoreHead.setAttribute('scope', 'row');
         tableStoreHead.textContent = this.name;
         document.querySelector('tbody').appendChild(tableStoreRow);
         tableStoreRow.appendChild(tableStoreHead);
