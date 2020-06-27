@@ -65,23 +65,27 @@
         
         var tableRow = document.createElement('tr');    
         var locationHeader = document.createElement('th');
+        locationHeader.setAttribute('scope', 'col');
         locationHeader.textContent = 'Store Locations';
         tableRow.appendChild(locationHeader);
 
         for(var i = 0; i < OPEN_HOURS; i++){
             var newHourHead = document.createElement('th');
+            var am = ':00am';
+            var pm = ':00pm';
+
             newHourHead.setAttribute('scope', 'col');
             var militaryHour = openingHour + i;
             if(militaryHour === 12){
-                newHourHead.textContent = '12:00pm';
+                newHourHead.textContent = '12' + pm;
             } else if(militaryHour === 24 || militaryHour === 0){
-                newHourHead.textContent = '12:00am';
+                newHourHead.textContent = '12' + am;
             } else if(militaryHour < 12){
                 //1am-11am
-                newHourHead.textContent = militaryHour + ':00am';
+                newHourHead.textContent = militaryHour + am;
             } else {
                 //1pm-11pm
-                newHourHead.textContent = (militaryHour - standardTimeOffSet) + ':00pm';
+                newHourHead.textContent = (militaryHour - standardTimeOffSet) + pm;
             }
             tableRow.appendChild(newHourHead);
         }
