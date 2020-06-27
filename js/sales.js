@@ -101,7 +101,7 @@
         document.querySelector('tfoot').appendChild(totalsRow);
         totalsRow.appendChild(totalsHead);
 
-        for(var i = 0; i < cookieStoreLocations[0].simulatedCookiesPerHour.length; i++){
+        for(var i = 0; i < OPEN_HOURS; i++){
             var total = 0;
             for(var j = 0; j < cookieStoreLocations.length; j++){
                 total += cookieStoreLocations[j].simulatedCookiesPerHour[i];
