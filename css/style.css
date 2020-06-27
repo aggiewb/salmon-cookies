@@ -8,6 +8,7 @@ ul {
 
 table {
     border-collapse: collapse;
+    text-align: center;
 }
 
 table, th, td, tr {
@@ -15,6 +16,10 @@ table, th, td, tr {
     padding: 1.875rem 0.9375rem; /* 30px 15px */
 }
 
+tbody th, tfoot th {
+    font-weight: normal;
+}
+
 tr:nth-child(even), .highlight{
-    background-color: #E3B5A4;
+    background-color: #f6f8fa;
 }
