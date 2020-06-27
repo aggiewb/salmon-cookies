@@ -51,7 +51,9 @@
         
         var tableRow = document.createElement('tr');    
         document.querySelector('thead').appendChild(tableRow);
-        tableRow.appendChild(document.createElement('th'));
+        var locationHeader = document.createElement('th');
+        locationHeader.textContent = 'Store Locations';
+        tableRow.appendChild(locationHeader);
 
         for(var i = 0; i < hoursOpen; i++){
             var newHourHead = document.createElement('th');
