@@ -79,9 +79,9 @@
             let militaryHour = openingHour + i;
             
             if(militaryHour === 12){
-                textContent = '12' + pm;
+                textContent = `12${pm}`;
             } else if(militaryHour === 24 || militaryHour === 0){
-                textContent = '12' + am;
+                textContent = `12${am}`;
             } else if(militaryHour < 12){
                 //1am-11am
                 textContent = militaryHour + am;
