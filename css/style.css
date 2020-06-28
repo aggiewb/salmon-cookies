@@ -1,3 +1,29 @@
+body {
+    color: #0B0014;
+}
+
 ul {
     list-style-type: circle;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table, th, td, tr {
+    border: 1px #773344 solid;
+    padding: 1.875rem 0.9375rem; /* 30px 15px */
+}
+
+tbody th, tfoot th {
+    font-weight: normal;
+}
+
+tr:nth-child(even), .highlight{
+    background-color: #f6f8fa;
+}
+
+#store-locations {
+    text-indent: -10000px;
 }
