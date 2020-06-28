@@ -75,8 +75,8 @@
         for(let i = 0; i < OPEN_HOURS; i++){
             const am = ':00am';
             const pm = ':00pm';
+            const militaryHour = openingHour + i;
             let textContent;
-            let militaryHour = openingHour + i;
             
             if(militaryHour === 12){
                 textContent = `12${pm}`;
