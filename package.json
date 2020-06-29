@@ -1,0 +1,23 @@
+{
+  "name": "salmon-cookies",
+  "version": "1.0.0",
+  "description": "feature/_issue number_-_short\\_description_",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aggiewb/salmon-cookies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aggiewb/salmon-cookies/issues"
+  },
+  "homepage": "https://github.com/aggiewb/salmon-cookies#readme",
+  "devDependencies": {
+    "eslint": "^7.3.1"
+  }
+}
