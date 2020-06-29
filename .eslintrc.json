@@ -1,0 +1,27 @@
+{
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "rules": {
+        "semi": ["error"],
+        "prefer-const": "error",
+        "no-console": "error",
+        "indent": ["error", 4],
+        "eqeqeq": "error",
+        "strict": ["error", "function"],
+        "no-var": "error",
+        "camelcase": "error",
+        "comma-dangle": ["error"],
+        "comma-style": ["error"],
+        "no-trailing-spaces": "error",
+        "quotes": ["error", "single", {
+            "allowTemplateLiterals": true,
+            "avoidEscape": true 
+        }]
+    }
+}
