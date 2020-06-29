@@ -19,26 +19,26 @@
 
     CookieStore.prototype.randomCustomersPerHour = function(){
         return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
-    }
+    };
 
     CookieStore.prototype.calculateSimulatedCookiesPerHour = function(){
         for(let i = 0; i < OPEN_HOURS; i++){
             this.simulatedCookiesPerHour.push(Math.floor(this.randomCustomersPerHour() * this.averageCookiesPerCustomer));
         }
-    }
+    };
 
     CookieStore.prototype.render = function(){
         const tableStoreRow = document.createElement('tr');
         tableStoreRow.appendChild(createDataCell(this.name, 'th', 'row'));
 
         this.calculateSimulatedCookiesPerHour();
-        
+
         for(let i = 0; i < this.simulatedCookiesPerHour.length; i++){
             tableStoreRow.appendChild(createDataCell(this.simulatedCookiesPerHour[i], 'td'));
         }
         document.querySelector('tbody').appendChild(tableStoreRow);
         return tableStoreRow;
-    }
+    };
 
     CookieStore.prototype.calculateStoreTotal = function(){
         let total = 0;
@@ -46,7 +46,7 @@
             total += this.simulatedCookiesPerHour[i];
         }
         return total;
-    }
+    };
 
     function createStoreTableContents(){
         const hoursTableRow = createHoursHeadRow();
@@ -68,8 +68,8 @@
         //use military time
         const openingHour = 6;
         const standardTimeOffSet = 12;
-        
-        const tableRow = document.createElement('tr'); 
+
+        const tableRow = document.createElement('tr');
         tableRow.appendChild(createDataCell('Store Locations', 'th', 'col')).setAttribute('id', 'store-locations');
 
         for(let i = 0; i < OPEN_HOURS; i++){
@@ -77,7 +77,7 @@
             const pm = ':00pm';
             const militaryHour = openingHour + i;
             let textContent;
-            
+
             if(militaryHour === 12){
                 textContent = `12${pm}`;
             } else if(militaryHour === 24 || militaryHour === 0){
