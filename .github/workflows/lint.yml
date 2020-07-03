@@ -16,4 +16,3 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install -D eslint
       - run: npx eslint js/
-
