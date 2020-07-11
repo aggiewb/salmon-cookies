@@ -27,3 +27,18 @@ tr:nth-child(even), .highlight{
 #store-locations {
     text-indent: -10000px;
 }
+
+h2, form {
+    margin: 1rem; 
+}
+
+form {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #773344;
+}
+
+label, input[type="submit"] {
+    margin-top: 0.5rem;
+    display: block;
+}
