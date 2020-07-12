@@ -123,6 +123,19 @@
         return dataCell;
     }
 
+    function getNewStore(event){
+        event.preventDefault();
+        const formInputs = event.target.elements;
+        const storeName = formInputs.namedItem('store-name').value;
+        const minHourlyCustomers = formInputs.namedItem('min-hourly-customer').value;
+        const maxHourlyCustomers = formInputs.namedItem('min-hourly-customer').value;
+        const avgCookiesPerCustomer = formInputs.namedItem('avg-cookies-per-customer').value;
+        const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
+        cookieStoreLocations.push(newStore);
+        return newStore;
+    }
+
+    document.querySelector('form').addEventListener('submit', getNewStore);
     createStoreTableContents();
 
 })();
