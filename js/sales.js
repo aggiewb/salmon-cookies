@@ -16,6 +16,7 @@
 
     const cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
     const OPEN_HOURS = 14;
+    let allStoresTotal = 0;
 
     CookieStore.prototype.randomCustomersPerHour = function(){
         return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
@@ -52,7 +53,6 @@
         const hoursTableRow = createHoursHeadRow();
         hoursTableRow.appendChild(createDataCell('Daily Location Total', 'th', 'col'));
 
-        let allStoresTotal = 0;
         for(let i = 0; i < cookieStoreLocations.length; i++){
             const store = cookieStoreLocations[i];
             const storeTableRow = store.render();
@@ -132,7 +132,16 @@
         const avgCookiesPerCustomer = formInputs.namedItem('avg-cookies-per-customer').value;
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
-        return newStore;
+        addNewStore(newStore);
+    }
+
+    //TODO: Figure out why random numbers aren't generating on each new store row, and figure out how to update all totals cell
+    function addNewStore(newStore){
+        let storeTotal = 0;
+        newStore.render();
+        newStore.simulatedCookiesPerHour.forEach(hour => storeTotal += hour);
+        allStoresTotal += newStore.calculateStoreTotal();
+        document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
     }
 
     document.querySelector('form').addEventListener('submit', getNewStore);
