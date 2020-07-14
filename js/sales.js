@@ -61,7 +61,7 @@
             storeTableRow.appendChild(createDataCell(total, 'td'));
         }
         const totalsRow = createTotalsFooterRow();
-        totalsRow.appendChild(createDataCell(allStoresTotal, 'td'));
+        totalsRow.appendChild(createDataCell(allStoresTotal, 'td')).setAttribute('id', 'all-stores-total');
     }
 
     function createHoursHeadRow(){
@@ -128,20 +128,20 @@
         const formInputs = event.target.elements;
         const storeName = formInputs.namedItem('store-name').value;
         const minHourlyCustomers = formInputs.namedItem('min-hourly-customer').value;
-        const maxHourlyCustomers = formInputs.namedItem('min-hourly-customer').value;
+        const maxHourlyCustomers = formInputs.namedItem('max-hourly-customer').value;
         const avgCookiesPerCustomer = formInputs.namedItem('avg-cookies-per-customer').value;
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
     }
 
-    //TODO: Figure out why random numbers aren't generating on each new store row, and figure out how to update all totals cell
     function addNewStore(newStore){
-        let storeTotal = 0;
         newStore.render();
+        let storeTotal = 0;
         newStore.simulatedCookiesPerHour.forEach(hour => storeTotal += hour);
-        allStoresTotal += newStore.calculateStoreTotal();
         document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
+        allStoresTotal += newStore.calculateStoreTotal();
+        document.querySelector('#all-stores-total').textContent = allStoresTotal;
     }
 
     document.querySelector('form').addEventListener('submit', getNewStore);
