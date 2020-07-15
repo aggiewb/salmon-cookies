@@ -127,24 +127,36 @@
         event.preventDefault();
         const formInputs = event.target.elements;
         const storeName = formInputs.namedItem('store-name').value;
-        const minHourlyCustomers = formInputs.namedItem('min-hourly-customer').value;
-        const maxHourlyCustomers = formInputs.namedItem('max-hourly-customer').value;
-        const avgCookiesPerCustomer = formInputs.namedItem('avg-cookies-per-customer').value;
+        const minHourlyCustomers = parseInt(formInputs.namedItem('min-hourly-customer').value);
+        const maxHourlyCustomers = parseInt(formInputs.namedItem('max-hourly-customer').value);
+        const avgCookiesPerCustomer = parseInt(formInputs.namedItem('avg-cookies-per-customer').value);
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
     }
 
+    //TODO: Add warning message to name input field and disable submit until all inputs all valid
+    function newStoreNameInputValidation(event){
+        const storeNameInput = event.target;
+        if(!isNaN(storeNameInput.value)){
+            storeNameInput.value = '';
+            storeNameInput.setAttribute('id', 'warning');
+        } else {
+            storeNameInput.removeAttribute('id', 'warning');
+        }
+    }
+
     function addNewStore(newStore){
         newStore.render();
-        let storeTotal = 0;
-        newStore.simulatedCookiesPerHour.forEach(hour => storeTotal += hour);
+        let storeTotal = newStore.calculateStoreTotal();
         document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
-        allStoresTotal += newStore.calculateStoreTotal();
+        allStoresTotal += storeTotal;
         document.querySelector('#all-stores-total').textContent = allStoresTotal;
     }
 
     document.querySelector('form').addEventListener('submit', getNewStore);
+    document.querySelector('input[id=\'store-name\']').addEventListener('input', newStoreNameInputValidation);
+
     createStoreTableContents();
 
 })();
