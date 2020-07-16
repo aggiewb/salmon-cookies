@@ -7,26 +7,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Salmon Cookies: Hourly Sales Projections</h1>
-        <table>
-            <caption>Cookies Needed By Location Each Day</caption>
-            <thead></thead>
-            <tbody></tbody>
-            <tfoot></tfoot>
-        </table>
-        <h2>New Store Input</h2>
-        <form>
-            <label for="store-name">Store Name</label>
-            <input type="text" id="store-name">
-            <p id="hide-name-warning-message">Please enter a valid store name.</p>
-            <label for="min-hourly-customer">Minimum Amount of Hourly Customer</label>
-            <input type="number" id="min-hourly-customer" min="1" max="250">
-            <label for="max-hourly-customer">Maximum Amount of Hourly Customers</label>
-            <input type="number" id="max-hourly-customer" min="1" max="250">
-            <label for="avg-cookies-per-customer">Average Amount of Cookies Purchased Per Customer</label>
-            <input type="number" id="avg-cookies-per-customer" min="1" max="50">
-            <input type="submit" value="Enter store" disabled></submit>
-        </form>
+        <article>
+            <h1>Salmon Cookies: Hourly Sales Projections</h1>
+            <table>
+                <caption>Cookies Needed By Location Each Day</caption>
+                <thead></thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </article>
+        <article>
+            <h2>New Store Input</h2>
+            <form>
+                <label for="store-name">Store Name</label>
+                <input type="text" id="store-name">
+                <p id="hide-name-warning-message">Please enter a valid store name.</p>
+                <label for="min-hourly-customer">Minimum Amount of Hourly Customer</label>
+                <input type="number" id="min-hourly-customer" min="1" max="250">
+                <label for="max-hourly-customer">Maximum Amount of Hourly Customers</label>
+                <input type="number" id="max-hourly-customer" min="1" max="250">
+                <label for="avg-cookies-per-customer">Average Amount of Cookies Purchased Per Customer</label>
+                <input type="number" id="avg-cookies-per-customer" min="1" max="50">
+                <input type="submit" value="Enter store" disabled></submit>
+            </form>
+        </article>
         <script src="js/sales.js"></script>
     </body>
 </html>
