@@ -133,6 +133,12 @@
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
+        form.querySelector('input[type=\'submit\']').disabled = true;
+        Array.from(form.querySelectorAll('input')).forEach(input => {
+            if(input.value !== 'Enter store'){
+                input.value = '';
+            }
+        });
     }
 
     function toggleTotalRowHighlight(){
