@@ -143,7 +143,6 @@
         }
     }
 
-    //TODO: Disable submit until all inputs all valid
     function newStoreNameInputValidation(event){
         const storeNameInput = event.target;
         if(!isNaN(storeNameInput.value)){
@@ -156,6 +155,15 @@
         }
     }
 
+    function allInputsCompleted(event){
+        const form = event.target.parentNode;
+        const formInputs = Array.from(form.querySelectorAll('input'));
+        console.log(formInputs, formInputs.value);
+        if(formInputs.find(input => input.value === '') === undefined){
+            document.querySelector('input[type=\'submit\']').disabled = false;
+        }
+    }
+
     function addNewStore(newStore){
         newStore.render();
         let storeTotal = newStore.calculateStoreTotal();
@@ -165,9 +173,10 @@
         toggleTotalRowHighlight();
     }
 
-    document.querySelector('form').addEventListener('submit', getNewStore);
-    document.querySelector('input[id=\'store-name\']').addEventListener('input', newStoreNameInputValidation);
-
+    const form = document.querySelector('form');
+    form.addEventListener('submit', getNewStore);
+    form.addEventListener('keyup', allInputsCompleted);
+    document.querySelector('input[id=\'store-name\']').addEventListener('change', newStoreNameInputValidation);
     createStoreTableContents();
 
 })();
