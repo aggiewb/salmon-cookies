@@ -129,7 +129,7 @@
         const storeName = form.querySelector('#store-name').value;
         const minHourlyCustomers = parseInt(form.querySelector('#min-hourly-customer').value);
         const maxHourlyCustomers = parseInt(form.querySelector('#max-hourly-customer').value);
-        const avgCookiesPerCustomer = parseInt(form.querySelector('#avg-cookies-per-customer').value);
+        const avgCookiesPerCustomer = parseFloat(form.querySelector('#avg-cookies-per-customer').value);
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
