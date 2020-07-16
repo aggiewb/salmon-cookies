@@ -164,7 +164,6 @@
     function allInputsCompleted(event){
         const form = event.target.parentNode;
         const formInputs = Array.from(form.querySelectorAll('input'));
-        console.log(formInputs, formInputs.value);
         if(formInputs.find(input => input.value === '') === undefined){
             document.querySelector('input[type=\'submit\']').disabled = false;
         }
@@ -172,7 +171,7 @@
 
     function addNewStore(newStore){
         newStore.render();
-        let storeTotal = newStore.calculateStoreTotal();
+        const storeTotal = newStore.calculateStoreTotal();
         document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
         allStoresTotal += storeTotal;
         document.querySelector('#all-stores-total').textContent = allStoresTotal;
