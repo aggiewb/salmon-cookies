@@ -125,24 +125,34 @@
 
     function getNewStore(event){
         event.preventDefault();
-        const formInputs = event.target.elements;
-        const storeName = formInputs.namedItem('store-name').value;
-        const minHourlyCustomers = parseInt(formInputs.namedItem('min-hourly-customer').value);
-        const maxHourlyCustomers = parseInt(formInputs.namedItem('max-hourly-customer').value);
-        const avgCookiesPerCustomer = parseInt(formInputs.namedItem('avg-cookies-per-customer').value);
+        const form = event.target;
+        const storeName = form.querySelector('#store-name').value;
+        const minHourlyCustomers = parseInt(form.querySelector('#min-hourly-customer').value);
+        const maxHourlyCustomers = parseInt(form.querySelector('#max-hourly-customer').value);
+        const avgCookiesPerCustomer = parseInt(form.querySelector('#avg-cookies-per-customer').value);
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
     }
 
-    //TODO: Add warning message to name input field and disable submit until all inputs all valid
+    function toggleTotalRowHighlight(){
+        if(cookieStoreLocations.length % 2 === 0){
+            document.querySelector('tfoot').removeAttribute('class', 'highlight');
+        } else {
+            document.querySelector('tfoot').setAttribute('class', 'highlight');
+        }
+    }
+
+    //TODO: Disable submit until all inputs all valid
     function newStoreNameInputValidation(event){
         const storeNameInput = event.target;
         if(!isNaN(storeNameInput.value)){
             storeNameInput.value = '';
-            storeNameInput.setAttribute('id', 'warning');
+            storeNameInput.setAttribute('class', 'warning');
+            document.querySelector('#hide').setAttribute('id', 'name-warning');
         } else {
-            storeNameInput.removeAttribute('id', 'warning');
+            storeNameInput.removeAttribute('class', 'warning');
+            document.querySelector('p').setAttribute('id', 'hide');
         }
     }
 
@@ -152,6 +162,7 @@
         document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
         allStoresTotal += storeTotal;
         document.querySelector('#all-stores-total').textContent = allStoresTotal;
+        toggleTotalRowHighlight();
     }
 
     document.querySelector('form').addEventListener('submit', getNewStore);
