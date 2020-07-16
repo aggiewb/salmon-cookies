@@ -56,11 +56,11 @@ input[type="submit"] {
     box-shadow: 0 0 3.5px #f55;
 }
 
-#name-warning-message {
+.name-warning-message {
     color: #F55;
     font-weight: bold;
 }
 
-#hide-name-warning-message {
+.hide-name-warning-message {
     display: none;
 }

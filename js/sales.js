@@ -109,7 +109,7 @@
         const tfoot = document.querySelector('tfoot');
         tfoot.appendChild(totalsRow);
         if(cookieStoreLocations.length % 2 !== 0){
-            tfoot.setAttribute('class', 'highlight');
+            tfoot.classList.add('highlight');
         }
         return totalsRow;
     }
@@ -141,23 +141,17 @@
         });
     }
 
-    function toggleTotalRowHighlight(){
-        if(cookieStoreLocations.length % 2 === 0){
-            document.querySelector('tfoot').removeAttribute('class', 'highlight');
-        } else {
-            document.querySelector('tfoot').setAttribute('class', 'highlight');
-        }
-    }
-
     function newStoreNameInputValidation(event){
         const storeNameInput = event.target;
+        const warningMessageElement = document.querySelector('p');
         if(!isNaN(storeNameInput.value)){
             storeNameInput.value = '';
-            storeNameInput.setAttribute('class', 'name-warning-input');
-            document.querySelector('#hide-name-warning-message').setAttribute('id', 'name-warning-message');
+            storeNameInput.classList.add('name-warning-input');
+            warningMessageElement.classList.remove('hide-name-warning-message');
+            warningMessageElement.classList.add('name-warning-message');
         } else {
-            storeNameInput.removeAttribute('class', 'name-warning-input');
-            document.querySelector('p').setAttribute('id', 'hide-name-warning-message');
+            storeNameInput.classList.remove('name-warning-input');
+            warningMessageElement.classList.add('hide-name-warning-message');
         }
     }
 
@@ -175,7 +169,7 @@
         document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
         allStoresTotal += storeTotal;
         document.querySelector('#all-stores-total').textContent = allStoresTotal;
-        toggleTotalRowHighlight();
+        document.querySelector('tfoot').classList.toggle('highlight');
     }
 
     const form = document.querySelector('form');
