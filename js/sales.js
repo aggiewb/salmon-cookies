@@ -133,12 +133,8 @@
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
-        form.querySelector('input[type=\'submit\']').disabled = true;
-        Array.from(form.querySelectorAll('input')).forEach(input => {
-            if(input.value !== 'Enter store'){
-                input.value = '';
-            }
-        });
+        form.querySelector('input[type="submit"]').disabled = true;
+        Array.from(form.querySelectorAll('input:NOT([value="Enter store"])')).forEach(input => input.value = '');
     }
 
     function newStoreNameInputValidation(event){
@@ -159,7 +155,7 @@
         const form = event.target.parentNode;
         const formInputs = Array.from(form.querySelectorAll('input'));
         if(formInputs.find(input => input.value === '') === undefined){
-            document.querySelector('input[type=\'submit\']').disabled = false;
+            document.querySelector('input[type="submit"]').disabled = false;
         }
     }
 
