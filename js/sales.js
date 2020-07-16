@@ -149,10 +149,10 @@
         if(!isNaN(storeNameInput.value)){
             storeNameInput.value = '';
             storeNameInput.setAttribute('class', 'name-warning-input');
-            document.querySelector('#hide').setAttribute('id', 'name-warning-message');
+            document.querySelector('#hide-name-warning-message').setAttribute('id', 'name-warning-message');
         } else {
             storeNameInput.removeAttribute('class', 'name-warning-input');
-            document.querySelector('p').setAttribute('class', 'hide');
+            document.querySelector('p').setAttribute('id', 'hide-name-warning-message');
         }
     }
 

@@ -59,6 +59,6 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-.hide {
+#hide-name-warning-message {
     display: none;
 }
