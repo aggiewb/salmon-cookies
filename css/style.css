@@ -1,5 +1,6 @@
 body {
     color: #0B0014;
+    display: flex;
 }
 
 ul {
@@ -28,7 +29,12 @@ tr:nth-child(even), .highlight{
     text-indent: -10000px;
 }
 
-h2, form {
+h2 {
+    margin-top: 2.3rem;
+    margin-left: 0.625rem;
+}
+
+form {
     margin: 0.5rem; 
 }
 
@@ -36,7 +42,6 @@ form {
     width: 400px;
     padding: 10px;
     border: 1px solid #773344;
-    border-radius: 5px;
 }
 
 label, input[type="submit"] {
