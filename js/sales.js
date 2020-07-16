@@ -148,11 +148,11 @@
         const storeNameInput = event.target;
         if(!isNaN(storeNameInput.value)){
             storeNameInput.value = '';
-            storeNameInput.setAttribute('class', 'warning');
-            document.querySelector('#hide').setAttribute('id', 'name-warning');
+            storeNameInput.setAttribute('class', 'name-warning-input');
+            document.querySelector('#hide').setAttribute('id', 'name-warning-message');
         } else {
-            storeNameInput.removeAttribute('class', 'warning');
-            document.querySelector('p').setAttribute('id', 'hide');
+            storeNameInput.removeAttribute('class', 'name-warning-input');
+            document.querySelector('p').setAttribute('class', 'hide');
         }
     }
 
