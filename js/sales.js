@@ -151,11 +151,14 @@
         }
     }
 
-    function allInputsCompleted(event){
-        const form = event.target.parentNode;
+    function allInputsCompleted(){
+        const form = document.querySelector('form');
         const formInputs = Array.from(form.querySelectorAll('input'));
+        const submitInput = document.querySelector('input[type="submit"]');
         if(formInputs.find(input => input.value === '') === undefined){
-            document.querySelector('input[type="submit"]').disabled = false;
+            submitInput.disabled = false;
+        } else {
+            submitInput.disabled = true;
         }
     }
 
