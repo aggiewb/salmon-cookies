@@ -16,6 +16,7 @@
 
     const cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
     const OPEN_HOURS = 14;
+    let allStoresTotal = 0;
 
     CookieStore.prototype.randomCustomersPerHour = function(){
         return Math.ceil(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers)) + this.minHourlyCustomers;
@@ -52,7 +53,6 @@
         const hoursTableRow = createHoursHeadRow();
         hoursTableRow.appendChild(createDataCell('Daily Location Total', 'th', 'col'));
 
-        let allStoresTotal = 0;
         for(let i = 0; i < cookieStoreLocations.length; i++){
             const store = cookieStoreLocations[i];
             const storeTableRow = store.render();
@@ -61,7 +61,7 @@
             storeTableRow.appendChild(createDataCell(total, 'td'));
         }
         const totalsRow = createTotalsFooterRow();
-        totalsRow.appendChild(createDataCell(allStoresTotal, 'td'));
+        totalsRow.appendChild(createDataCell(allStoresTotal, 'td')).setAttribute('id', 'all-stores-total');
     }
 
     function createHoursHeadRow(){
@@ -109,7 +109,7 @@
         const tfoot = document.querySelector('tfoot');
         tfoot.appendChild(totalsRow);
         if(cookieStoreLocations.length % 2 !== 0){
-            tfoot.setAttribute('class', 'highlight');
+            tfoot.classList.add('highlight');
         }
         return totalsRow;
     }
@@ -123,6 +123,58 @@
         return dataCell;
     }
 
+    function getNewStore(event){
+        event.preventDefault();
+        const form = event.target;
+        const storeName = form.querySelector('#store-name').value;
+        const minHourlyCustomers = parseInt(form.querySelector('#min-hourly-customer').value);
+        const maxHourlyCustomers = parseInt(form.querySelector('#max-hourly-customer').value);
+        const avgCookiesPerCustomer = parseFloat(form.querySelector('#avg-cookies-per-customer').value);
+        const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
+        cookieStoreLocations.push(newStore);
+        addNewStore(newStore);
+        form.querySelector('input[type="submit"]').disabled = true;
+        Array.from(form.querySelectorAll('input:NOT([value="Enter store"])')).forEach(input => input.value = '');
+    }
+
+    function newStoreNameInputValidation(event){
+        const storeNameInput = event.target;
+        const warningMessageElement = document.querySelector('p');
+        if(!isNaN(storeNameInput.value)){
+            storeNameInput.value = '';
+            storeNameInput.classList.add('name-warning-input');
+            warningMessageElement.classList.remove('hide-name-warning-message');
+            warningMessageElement.classList.add('name-warning-message');
+        } else {
+            storeNameInput.classList.remove('name-warning-input');
+            warningMessageElement.classList.add('hide-name-warning-message');
+        }
+    }
+
+    function allInputsCompleted(){
+        const form = document.querySelector('form');
+        const formInputs = Array.from(form.querySelectorAll('input'));
+        const submitInput = document.querySelector('input[type="submit"]');
+        if(formInputs.find(input => input.value === '') === undefined){
+            submitInput.disabled = false;
+        } else {
+            submitInput.disabled = true;
+        }
+    }
+
+    function addNewStore(newStore){
+        newStore.render();
+        const storeTotal = newStore.calculateStoreTotal();
+        document.querySelector('tbody').lastChild.appendChild(createDataCell(storeTotal, 'td'));
+        allStoresTotal += storeTotal;
+        document.querySelector('#all-stores-total').textContent = allStoresTotal;
+        document.querySelector('tfoot').classList.toggle('highlight');
+    }
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', getNewStore);
+    form.addEventListener('keyup', allInputsCompleted);
+    document.querySelector('input[id=\'store-name\']').addEventListener('change', newStoreNameInputValidation);
     createStoreTableContents();
 
 })();
