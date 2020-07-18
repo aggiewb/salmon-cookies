@@ -1,5 +1,6 @@
 body {
     color: #0B0014;
+    display: flex;
 }
 
 ul {
@@ -26,4 +27,40 @@ tr:nth-child(even), .highlight{
 
 #store-locations {
     text-indent: -10000px;
+}
+
+h2 {
+    margin-top: 2.3rem;
+    margin-left: 0.625rem;
+}
+
+form {
+    margin: 0.5rem; 
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #773344;
+}
+
+label, input[type="submit"] {
+    margin: 0.5rem 0;
+    display: block;
+}
+
+input[type="submit"] {
+    padding: 0.3rem;
+}
+
+.name-warning-input {
+    outline: none;
+    border-color: #F55;
+    box-shadow: 0 0 3.5px #f55;
+}
+
+.name-warning-message {
+    color: #F55;
+    font-weight: bold;
+}
+
+.hide-name-warning-message {
+    display: none;
 }
