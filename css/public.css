@@ -1,0 +1,45 @@
+:root {
+    --old-lace: #FEF9EB;
+    --saddle-brown: #8B3F13;
+    --y-in-mn-blue: #2F4C74;
+    --banana-mania: #FCE5B1;
+}
+
+body {
+    background-color: var(--old-lace);
+    color: var(--y-in-mn-blue);
+    font-size: 30px;
+}
+
+img, h1 {
+    display: inline;
+}
+
+p, table {
+    color: var(--saddle-brown);
+    font-size: 20px;
+}
+
+nav ul{ 
+    display: flex;
+    padding: 0;
+}
+
+nav li{
+    list-style-type: none;
+    display: inline-block;
+    text-decoration: none;
+    margin: 1px;
+}
+
+nav a:hover{
+    background-color: var(--y-in-mn-blue);
+    color: var(--banana-mania);
+}
+
+nav a {
+    color: var(--y-in-mn-blue);
+    border: 3px solid var(--y-in-mn-blue);
+    text-decoration: none;
+    padding: 10px;
+}
