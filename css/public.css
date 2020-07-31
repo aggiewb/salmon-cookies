@@ -141,7 +141,34 @@ input[type="submit"] {
 }
 
 /* Footer */
-footer {
+footer{
     grid-area: footer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+footer p{
     text-align: center;
+}
+
+@keyframes fishMove {
+    0% {margin-right: 0%;}
+    49% {transform: scaleX(1);}
+    50% {
+        margin-right: calc(100% - 81px);
+        transform: scaleX(-1);
+    }
+    99% {transform: scaleX(-1);}
+    100%{margin-right: 0%;}
+}
+
+footer img {
+    height: 45%;
+    animation-name: fishMove;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    position: absolute;
+    right: 0;
 }
