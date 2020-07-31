@@ -73,6 +73,19 @@ form > input, textarea {
     margin-bottom: 5px;
 }
 
+input[type="submit"] {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1rem;
+    background-color: var(--y-in-mn-blue);
+    color: var(--banana-mania);
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
 #events {
     grid-area: events;
 }
