@@ -9,6 +9,39 @@ body {
     background-color: var(--old-lace);
     color: var(--y-in-mn-blue);
     font-size: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-areas:
+        "header      header      header      header"
+        "main        main        main        main"
+        "main        main        main        main"
+        "events      events      events      events"
+        "merchandise merchandise merchandise merchandise"
+        "footer      footer      footer      footer"
+}
+
+body > * {
+    border: 3px solid var(--y-in-mn-blue);
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+}
+
+#events {
+    grid-area: events;
+}
+
+#merchandise {
+    grid-area: merchandise;
+}
+
+footer {
+    grid-area: footer;
 }
 
 p, table {
@@ -18,6 +51,7 @@ p, table {
 nav ul{ 
     display: flex;
     justify-content: space-evenly;
+    padding-left: 0;
 }
 
 nav li{
