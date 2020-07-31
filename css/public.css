@@ -90,6 +90,12 @@ input[type="submit"] {
     grid-area: events;
 }
 
+#events li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-left: -30px;
+}
+
 #merchandise {
     grid-area: merchandise;
     display: flex;
