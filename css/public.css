@@ -28,6 +28,11 @@ header {
     grid-area: header;
 }
 
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
 main {
     grid-area: main;
 }
@@ -42,6 +47,7 @@ main {
 
 footer {
     grid-area: footer;
+    text-align: center;
 }
 
 p, table {
