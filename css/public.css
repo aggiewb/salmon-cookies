@@ -41,7 +41,6 @@ h1 {
     margin-top: 10px;
 }
 
-
 h2 {
     font-size: 1.75rem;
 }
@@ -67,6 +66,11 @@ address {
 
 main p {
     text-align: center;
+}
+
+form > input, textarea {
+    display: block;
+    margin-bottom: 5px;
 }
 
 #events {

@@ -33,7 +33,21 @@
             <h3>Mission</h3>
             <p>Cupcake ipsum dolor sit amet. Fruitcake cake gummi bears brownie apple pie jelly gummi bears. Cookie bear claw donut pie tootsie roll lemon drops muffin cookie.</p>
             <h3>Contact Us</h3>
-            <p>We'd love to hear from you!</p>  
+            <p>We'd love to hear from you!</p>
+            <p>Phone: 206-555-5555</p>
+            <form id="contact" action="https://formspree.io/maypveyw" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="jane.doe@example.com">
+                
+                <label for="message">Message:</label>
+                <textarea name="message" rows="10" cols="30" form="contact" placeholder="We love your cookies!"></textarea>
+                
+                <input type="submit" value="Submit">
+                <p id="form-submit-status"></p>
+            </form>  
         </main>
         <article id="events">
             <h2>Events</h2>
@@ -53,6 +67,6 @@
             <p>&copy; Salmon Cookies Inc. All Rights Reserved.</p>
             <p>Created by <a href="https://www.aggiewheelerbateman.com" target="_blank">Aggie Wheeler Bateman</a></p>
         </footer>
-        <script src=""></script>
+        <script src="js/form.js"></script>
     </body>
 </html>
