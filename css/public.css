@@ -47,6 +47,16 @@ main {
     grid-area: main;
 }
 
+main li {
+    background: url('../media/location-pin.png') no-repeat left top;
+    padding: 0px 0px 20px 30px;
+    list-style: none;
+}
+
+address {
+    font-style: normal;
+}
+
 #events {
     grid-area: events;
 }
