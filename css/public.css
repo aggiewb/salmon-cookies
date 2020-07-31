@@ -8,7 +8,6 @@
 body {
     background-color: var(--old-lace);
     color: var(--y-in-mn-blue);
-    font-size: 1rem;
     display: grid;
     grid-row-gap: 0.25rem;
     grid-template-columns: repeat(4, 25%);
@@ -33,7 +32,15 @@ header {
 
 h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
 }
 
 main {
@@ -48,6 +55,7 @@ main {
     grid-area: merchandise;
     display: flex;
     align-items: center;
+    text-align: center;
     flex-direction: column;
 }
 
@@ -78,7 +86,10 @@ nav a:hover{
 
 nav a {
     color: var(--y-in-mn-blue);
-    border: 3px solid var(--y-in-mn-blue);
     text-decoration: none;
     padding: 0.5rem;
+}
+
+nav a, #merchandise img {
+    border: 3px solid var(--y-in-mn-blue);
 }
