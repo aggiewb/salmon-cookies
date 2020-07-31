@@ -10,6 +10,7 @@ body {
     color: var(--y-in-mn-blue);
     font-size: 1rem;
     display: grid;
+    grid-row-gap: 0.25rem;
     grid-template-columns: repeat(4, 25%);
     grid-template-areas:
         "header      header      header      header"
@@ -17,11 +18,13 @@ body {
         "main        main        main        main"
         "events      events      events      events"
         "merchandise merchandise merchandise merchandise"
-        "footer      footer      footer      footer"
+        "footer      footer      footer      footer";
+    font-family: 'Balsamiq Sans', cursive;
 }
 
 body > * {
-    border: 3px solid var(--y-in-mn-blue);
+    border: 2px dotted var(--y-in-mn-blue);
+    border-radius: 5px;
 }
 
 header {
@@ -43,7 +46,9 @@ main {
 
 #merchandise {
     grid-area: merchandise;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 footer {
@@ -53,6 +58,7 @@ footer {
 
 p, table {
     color: var(--saddle-brown);
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav ul{ 
