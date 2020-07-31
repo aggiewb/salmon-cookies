@@ -28,6 +28,7 @@ body > * {
     padding: 10px;
 }
 
+/* Header */
 header {
     grid-area: header;
 }
@@ -39,79 +40,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
-}
-
-h2 {
-    font-size: 1.75rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-}
-
-main {
-    grid-area: main;
-}
-
-main li {
-    background: url('../media/location-pin.png') no-repeat left top;
-    padding: 0px 0px 20px 30px;
-    list-style: none;
-    margin-left: -30px;
-}
-
-address {
-    font-style: normal;
-}
-
-main p {
-    text-align: center;
-}
-
-form > input, textarea {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="submit"] {
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 1rem;
-    background-color: var(--y-in-mn-blue);
-    color: var(--banana-mania);
-}
-
-input[type="submit"] {
-    cursor: pointer;
-}
-
-#events {
-    grid-area: events;
-}
-
-#events li {
-    list-style-type: none;
-    margin-bottom: 10px;
-    margin-left: -30px;
-}
-
-#merchandise {
-    grid-area: merchandise;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-}
-
-footer {
-    grid-area: footer;
-    text-align: center;
-}
-
-p, table {
-    color: var(--saddle-brown);
-    font-family: 'Montserrat', sans-serif;
 }
 
 nav ul{ 
@@ -137,4 +65,83 @@ nav a {
 
 nav a, #merchandise img {
     border: 3px solid var(--y-in-mn-blue);
+}
+
+/* Main */
+main {
+    grid-area: main;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    color: var(--saddle-brown);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Locations */
+main li {
+    background: url('../media/location-pin.png') no-repeat left top;
+    padding: 0px 0px 20px 30px;
+    list-style: none;
+    margin-left: -30px;
+}
+
+address {
+    font-style: normal;
+}
+
+main p {
+    text-align: center;
+}
+
+/* Contact Form */
+form > input, textarea {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1rem;
+    background-color: var(--y-in-mn-blue);
+    color: var(--banana-mania);
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+/* Events Article */
+#events {
+    grid-area: events;
+}
+
+#events li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-left: -30px;
+}
+
+/* Merchandise Article */
+#merchandise {
+    grid-area: merchandise;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    text-align: center;
 }
