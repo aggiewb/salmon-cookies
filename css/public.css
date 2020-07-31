@@ -24,6 +24,7 @@ body {
 body > * {
     border: 2px dotted var(--y-in-mn-blue);
     border-radius: 5px;
+    padding: 10px;
 }
 
 header {
@@ -55,6 +56,10 @@ main li {
 
 address {
     font-style: normal;
+}
+
+main p {
+    text-align: center;
 }
 
 #events {
