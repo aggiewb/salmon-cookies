@@ -8,28 +8,20 @@
 body {
     background-color: var(--old-lace);
     color: var(--y-in-mn-blue);
-    font-size: 30px;
-}
-
-img, h1 {
-    display: inline;
+    font-size: 1rem;
 }
 
 p, table {
     color: var(--saddle-brown);
-    font-size: 20px;
 }
 
 nav ul{ 
     display: flex;
-    padding: 0;
+    justify-content: space-evenly;
 }
 
 nav li{
     list-style-type: none;
-    display: inline-block;
-    text-decoration: none;
-    margin: 1px;
 }
 
 nav a:hover{
@@ -41,5 +33,5 @@ nav a {
     color: var(--y-in-mn-blue);
     border: 3px solid var(--y-in-mn-blue);
     text-decoration: none;
-    padding: 10px;
+    padding: 0.5rem;
 }
