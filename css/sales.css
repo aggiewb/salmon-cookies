@@ -33,6 +33,10 @@ h2 {
     margin-left: 0.625rem;
 }
 
+p {
+    margin-left: 1rem;
+}
+
 form {
     margin: 0.5rem; 
     width: 400px;
