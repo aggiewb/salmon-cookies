@@ -131,6 +131,12 @@ input[type="submit"] {
     margin-left: -30px;
 }
 
+#events img {
+    border: 3px solid var(--y-in-mn-blue);
+    border-radius: 5px;
+    width: 100%;
+}
+
 /* Merchandise Article */
 #merchandise {
     grid-area: merchandise;
