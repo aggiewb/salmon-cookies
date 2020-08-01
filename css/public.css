@@ -9,15 +9,13 @@ body {
     background-color: var(--old-lace);
     color: var(--y-in-mn-blue);
     display: grid;
-    grid-row-gap: 0.25rem;
-    grid-template-columns: repeat(4, 25%);
+    grid-gap: 0.25rem;
     grid-template-areas:
-        "header      header      header      header"
-        "main        main        main        main"
-        "main        main        main        main"
-        "events      events      events      events"
-        "merchandise merchandise merchandise merchandise"
-        "footer      footer      footer      footer";
+        "header"
+        "main"
+        "events"
+        "merchandise"
+        "footer";
     font-family: 'Balsamiq Sans', cursive;
     align-items: center;
 }
@@ -123,6 +121,8 @@ input[type="submit"] {
 /* Events Article */
 #events {
     grid-area: events;
+    display: flex;
+    flex-direction: column;
 }
 
 #events li {
@@ -134,27 +134,30 @@ input[type="submit"] {
 #events img {
     border: 3px solid var(--y-in-mn-blue);
     border-radius: 5px;
-    width: 100%;
 }
 
 /* Merchandise Article */
 #merchandise {
     grid-area: merchandise;
-    display: flex;
-    align-items: center;
     text-align: center;
+}
+
+#products {
+    display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Footer */
-footer{
+footer {
     grid-area: footer;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-footer p{
+
+footer p {
     text-align: center;
 }
 
@@ -177,4 +180,72 @@ footer img {
     animation-iteration-count: infinite;
     position: absolute;
     right: 0;
+}
+
+
+@media screen and (min-width: 700px) {
+    h1 {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    main p {
+        text-align: left;
+    }
+
+    #events {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 930px) {
+    body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "header       header"
+            "main         events"
+            "main         events"
+            "merchandise  merchandise"
+            "footer       footer";
+    }
+
+    nav {
+        display: none;
+    }
+    
+    #products {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #events {
+        align-self: stretch;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    nav {
+        display: none;
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "header      header     header"
+            "main        events     merchandise"
+            "main        events     merchandise"
+            "footer      footer     footer";
+    }
+
+    #merchandise {
+        align-self: stretch;
+    }
+
+    #products {
+        flex-direction: column;
+    }
 }
