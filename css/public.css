@@ -16,7 +16,7 @@ body {
         "events"
         "merchandise"
         "footer";
-    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Josefin Sans', sans-serif;
     align-items: center;
 }
 
@@ -29,6 +29,8 @@ body > * {
 /* Header */
 header {
     grid-area: header;
+    width: 85%;
+    place-self: center;
 }
 
 h1 {
@@ -134,6 +136,7 @@ input[type="submit"] {
 #events img {
     border: 3px solid var(--y-in-mn-blue);
     border-radius: 5px;
+    width: 100%;
 }
 
 /* Merchandise Article */
