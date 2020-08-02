@@ -102,7 +102,7 @@ main p {
 }
 
 /* Contact Form */
-form > input, textarea {
+input, textarea {
     display: block;
     margin-bottom: 5px;
 }
