@@ -114,9 +114,6 @@ input[type="submit"] {
     font-size: 1rem;
     background-color: var(--y-in-mn-blue);
     color: var(--banana-mania);
-}
-
-input[type="submit"] {
     cursor: pointer;
 }
 
