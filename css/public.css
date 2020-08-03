@@ -117,6 +117,10 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+.displayButtomNone {
+    display: none;
+}
+
 /* Events Article */
 #events {
     grid-area: events;
