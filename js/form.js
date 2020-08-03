@@ -19,8 +19,8 @@ window.addEventListener('DOMContentLoaded', function() {
         button.style.display = 'none';
     }
 
-    function error() {
-        status.textContent = 'Oops! There was a problem.';
+    function error(err) {
+        status.textContent = `Oops! There was a problem. Error: ${err}`;
     }
 
     form.addEventListener('submit', function(event) {
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
             if(xhr.status === 200) {
                 success();
             } else {
-                error();
+                error(error);
             }
         };
         xhr.send(data);
