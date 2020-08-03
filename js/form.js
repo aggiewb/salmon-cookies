@@ -10,17 +10,15 @@ window.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
     const form = document.querySelector('form');
-    const button = document.querySelector('input[type="submit"]');
-    const status = document.getElementById('form-submit-status');
 
-    function success() {
+    function success(formStatusElement) {
         form.reset();
-        status.textContent = "Thanks! We'll be getting back to you in 24-48 hours.";
-        button.style.display = 'none';
+        formStatusElement.textContent = "Thanks! We'll be getting back to you in 24-48 hours.";
+        document.querySelector('input[type="submit"]').classList.add('displayButtonNone');
     }
 
-    function error(err) {
-        status.textContent = `Oops! There was a problem. Error code: ${err}`;
+    function error(formStatusElement, err) {
+        formStatusElement.textContent = `Oops! There was a problem. Error code: ${err}`;
     }
 
     form.addEventListener('submit', function(event) {
@@ -30,14 +28,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
     function ajax(method, url, data) {
         const xhr = new XMLHttpRequest();
+        const status = document.getElementById('form-submit-status');
         xhr.open(method, url);
         xhr.setRequestHeader('Accept', 'application/json');
         xhr.onreadystatechange = function() {
             if(xhr.readyState !== XMLHttpRequest.DONE) return;
             if(xhr.status === 200) {
-                success();
+                success(status);
             } else {
-                error(xhr.status);
+                error(status, xhr.status);
             }
         };
         xhr.send(data);
