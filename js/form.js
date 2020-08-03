@@ -20,16 +20,15 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     function error(err) {
-        status.textContent = `Oops! There was a problem. Error: ${err}`;
+        status.textContent = `Oops! There was a problem. Error code: ${err}`;
     }
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-        const data = new FormData(form);
-        ajax(form.method, form.action, data, success, error);
+        ajax(form.method, form.action, new FormData(form));
     });
 
-    function ajax(method, url, data, success, error) {
+    function ajax(method, url, data) {
         const xhr = new XMLHttpRequest();
         xhr.open(method, url);
         xhr.setRequestHeader('Accept', 'application/json');
@@ -38,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
             if(xhr.status === 200) {
                 success();
             } else {
-                error(error);
+                error(xhr.status);
             }
         };
         xhr.send(data);
