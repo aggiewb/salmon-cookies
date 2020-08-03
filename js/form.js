@@ -1,4 +1,4 @@
-// https://formspree.io/legal/terms-of-service 
+// https://formspree.io/legal/terms-of-service
 // 7. Your use of our services
 // As a global company based in the US with operations in other countries, Formspree must comply with economic sanctions and trade restrictions, including those implemented by the Office of Foreign Assets Control (“OFAC”) of the US Department of the Treasury. You may not use the Services to enable any person (including you) to benefit any activities Formspree has identified as a prohibited business or activity (collectively, “Prohibited Businesses”). Prohibited Businesses include use of the Services in or for the benefit of a country, organization, entity, or person embargoed or blocked by any government, including those on sanctions lists identified by the United States Office of Foreign Asset Control (OFAC). You may not use Formspree to enable individuals or entities identified on sanctions lists such as OFAC’s Specially Designated Nationals (“SDN”) List or Foreign Sanctions Evaders (“FSE”) List.
 
