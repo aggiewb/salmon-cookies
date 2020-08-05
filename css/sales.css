@@ -1,6 +1,5 @@
 body {
     color: #0B0014;
-    display: flex;
 }
 
 ul {
@@ -32,6 +31,10 @@ tr:nth-child(even), .highlight{
 h2 {
     margin-top: 2.3rem;
     margin-left: 0.625rem;
+}
+
+p {
+    margin-left: 1rem;
 }
 
 form {
