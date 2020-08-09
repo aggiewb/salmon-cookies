@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Salmon Cookies</title>
+        <link href="css/public.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Montserrat&display=swap" rel="stylesheet"> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <h1><img src="media/salmon.png" alt="">Salmon Cookies<img src="media/chinook.png" alt=""></h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#merchandise">Merchandise</a></li>
+                    <li><a href="#events">Events</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="about">
+            <h2>About Us</h2>
+            <h3>Locations</h3>
+                <ul>
+                    <li>Downtown<address>3015 NW 54th St, Seattle, WA 98107</address></li>
+                    <li>SeaTac Airport<address>3015 NW 54th St, Seattle, WA 98107</address></li>
+                    <li>Seattle Center<address>3015 NW 54th St, Seattle, WA 98107</address></li>
+                    <li>Capitol Hill<address>3015 NW 54th St, Seattle, WA 98107</address></li>
+                    <li>Alki<address>3015 NW 54th St, Seattle, WA 98107</address></li>
+                </ul>
+            <h3>Hours</h3>
+            <p>Monday - Sunday: 6am - 7pm</p>
+            <h3>About Us</h3>
+            <h4>Company History</h4>
+            <p>Cupcake ipsum dolor sit amet. Fruitcake cake gummi bears brownie apple pie jelly gummi bears. Cookie bear claw donut pie tootsie roll lemon drops muffin cookie.</p>
+            <h4>Mission</h4>
+            <p>Cupcake ipsum dolor sit amet. Fruitcake cake gummi bears brownie apple pie jelly gummi bears. Cookie bear claw donut pie tootsie roll lemon drops muffin cookie.</p>
+            <h3>Contact Us</h3>
+            <p>We'd love to hear from you!</p>
+            <p>Phone: 206-555-5555</p>
+            <form id="contact" action="https://formspree.io/maypveyw" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="jane.doe@example.com" required>
+                
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" rows="10" cols="30" form="contact" placeholder="I love your cookies!" required></textarea>
+                
+                <input type="submit" value="Submit">
+                <p id="form-submit-status"></p>
+            </form>  
+        </main>
+        <article id="events">
+            <h2>Family Friendly Events</h2>
+            <div>
+                <img src="media/family.jpg" alt="A family">
+            </div>
+            <h3>August</h3>
+            <ul>
+                <li>1st:<p>Annual Cookie Day! Buy two packs and get a free cookie cutter!</p></li>
+                <li>5th:<p>Listen to smooth jazz when All About Cats plays at 3pm.</p></li>
+                <li>15th:<p>Free doggie friendly treats!</p></li>
+            </ul>
+        </article>
+        <article id="merchandise">
+            <h2>Salmon Merch</h2>
+            <p>Products available in stores!</p>
+            <div id="products">
+                <div>
+                    <img src="media/frosted-cookie.jpg" alt="">
+                    <p>Salmon Cookies 12-pack $15</p>
+                </div>
+                <div>
+                    <img src="media/cutter.jpeg" alt="">
+                    <p>Salmon Cookie Cutter $6</p>
+                </div>
+                <div>
+                    <img src="media/shirt.jpg" alt="">
+                    <p>Salmon Tee $25, size Small-XXL</p>
+                </div>
+            </div>
+        </article>
+        <footer>
+            <img src="media/fish.png" alt="">
+            <p>Salmon Cookies Inc. All Rights Reserved.</p>
+            <p>Created by <a href="https://www.aggiewheelerbateman.com" target="_blank">Aggie Wheeler Bateman</a></p>
+        </footer>
+        <script src="js/form.js"></script>
+    </body>
+</html>

@@ -1,0 +1,260 @@
+:root {
+    --old-lace: #FEF9EB;
+    --saddle-brown: #8B3F13;
+    --y-in-mn-blue: #2F4C74;
+    --banana-mania: #FCE5B1;
+}
+
+body {
+    background-color: var(--old-lace);
+    color: var(--y-in-mn-blue);
+    display: grid;
+    grid-gap: 0.25rem;
+    grid-template-areas:
+        "header"
+        "main"
+        "events"
+        "merchandise"
+        "footer";
+    font-family: 'Josefin Sans', sans-serif;
+    align-items: center;
+}
+
+body > * {
+    border: 2px dotted var(--y-in-mn-blue);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Header */
+header {
+    grid-area: header;
+    width: 85%;
+    place-self: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+nav ul{ 
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 0;
+}
+
+nav li{
+    list-style-type: none;
+}
+
+nav a:hover{
+    background-color: var(--y-in-mn-blue);
+    color: var(--banana-mania);
+}
+
+nav a {
+    color: var(--y-in-mn-blue);
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+nav a, #merchandise img {
+    border: 3px solid var(--y-in-mn-blue);
+}
+
+/* Main */
+main {
+    grid-area: main;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.60rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin: 5px auto;
+}
+
+p {
+    color: var(--saddle-brown);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Locations */
+main li {
+    background: url('../media/location-pin.png') no-repeat left top;
+    padding: 0px 0px 20px 30px;
+    list-style: none;
+    margin-left: -30px;
+}
+
+address {
+    font-style: normal;
+}
+
+main p {
+    text-align: center;
+}
+
+/* Contact Form */
+input, textarea {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1rem;
+    background-color: var(--y-in-mn-blue);
+    color: var(--banana-mania);
+    cursor: pointer;
+}
+
+.displayButtonNone {
+    display: none;
+}
+
+/* Events Article */
+#events {
+    grid-area: events;
+    display: flex;
+    flex-direction: column;
+}
+
+#events li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-left: -30px;
+}
+
+#events img {
+    border: 3px solid var(--y-in-mn-blue);
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Merchandise Article */
+#merchandise {
+    grid-area: merchandise;
+    text-align: center;
+}
+
+#products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer p {
+    text-align: center;
+}
+
+@keyframes fishMove {
+    0% {margin-right: 0%;}
+    49% {transform: scaleX(1);}
+    50% {
+        margin-right: calc(100% - 81px);
+        transform: scaleX(-1);
+    }
+    99% {transform: scaleX(-1);}
+    100%{margin-right: 0%;}
+}
+
+footer img {
+    height: 45%;
+    animation-name: fishMove;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    position: absolute;
+    right: 0;
+}
+
+
+@media screen and (min-width: 700px) {
+    h1 {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    main p {
+        text-align: left;
+    }
+
+    #events {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 930px) {
+    body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "header       header"
+            "main         events"
+            "main         events"
+            "merchandise  merchandise"
+            "footer       footer";
+    }
+
+    nav {
+        display: none;
+    }
+    
+    #products {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #events {
+        align-self: stretch;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    nav {
+        display: none;
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "header      header     header"
+            "main        events     merchandise"
+            "main        events     merchandise"
+            "footer      footer     footer";
+    }
+
+    #merchandise {
+        align-self: stretch;
+    }
+
+    #products {
+        flex-direction: column;
+    }
+}
