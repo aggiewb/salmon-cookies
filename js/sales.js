@@ -149,6 +149,7 @@
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
+        localStorage.cookieStoreLocations = JSON.stringify(cookieStoreLocations);
         form.querySelector('input[type="submit"]').disabled = true;
         Array.from(form.querySelectorAll('input:NOT([value="Enter store"])')).forEach(input => input.value = '');
     }
