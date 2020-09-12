@@ -1,20 +1,34 @@
 (function(){
     'use strict';
-    function CookieStore(name, minHourlyCustomers, maxHourlyCustomers, averageCookiesPerCustomer){
+    function CookieStore(name, minHourlyCustomers, maxHourlyCustomers, averageCookiesPerCustomer, simulatedCookiesPerHour){
         this.name = name;
         this.minHourlyCustomers = minHourlyCustomers;
         this.maxHourlyCustomers = maxHourlyCustomers;
         this.averageCookiesPerCustomer = averageCookiesPerCustomer;
-        this.simulatedCookiesPerHour = [];
+        this.hasBeenCalculated = !!simulatedCookiesPerHour;
+        this.simulatedCookiesPerHour = simulatedCookiesPerHour || [];
     }
 
-    const firstPike = new CookieStore('1st and Pike', 23, 65, 6.3);
-    const seatacAirport = new CookieStore('SeaTac Airport', 3, 24, 1.2);
-    const seattleCenter = new CookieStore('Seattle Center', 11, 38, 3.7);
-    const capitolHill = new CookieStore('Capitol Hill', 20, 38, 2.3);
-    const alki = new CookieStore('Alki', 2, 16, 4.6);
+    let cookieStoreLocations;
+    if(localStorage.cookieStoreLocations){
+        cookieStoreLocations = JSON.parse(localStorage.cookieStoreLocations).map(store => {
+            return new CookieStore(
+                store.name,
+                store.minHourlyCustomers,
+                store.maxHourlyCustomers,
+                store.averageCookiesPerCustomer,
+                store.simulatedCookiesPerHour
+            );
+        });
+    } else {
+        const firstPike = new CookieStore('1st and Pike', 23, 65, 6.3);
+        const seatacAirport = new CookieStore('SeaTac Airport', 3, 24, 1.2);
+        const seattleCenter = new CookieStore('Seattle Center', 11, 38, 3.7);
+        const capitolHill = new CookieStore('Capitol Hill', 20, 38, 2.3);
+        const alki = new CookieStore('Alki', 2, 16, 4.6);
+        cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
+    }
 
-    const cookieStoreLocations = [firstPike, seatacAirport, seattleCenter, capitolHill, alki];
     const OPEN_HOURS = 14;
     let allStoresTotal = 0;
 
@@ -23,8 +37,11 @@
     };
 
     CookieStore.prototype.calculateSimulatedCookiesPerHour = function(){
-        for(let i = 0; i < OPEN_HOURS; i++){
-            this.simulatedCookiesPerHour.push(Math.floor(this.randomCustomersPerHour() * this.averageCookiesPerCustomer));
+        if(!this.hasBeenCalculated){
+            for(let i = 0; i < OPEN_HOURS; i++){
+                this.simulatedCookiesPerHour.push(Math.floor(this.randomCustomersPerHour() * this.averageCookiesPerCustomer));
+            }
+            this.hasBeenCalculated = true;
         }
     };
 
@@ -33,7 +50,6 @@
         tableStoreRow.appendChild(createDataCell(this.name, 'th', 'row'));
 
         this.calculateSimulatedCookiesPerHour();
-
         for(let i = 0; i < this.simulatedCookiesPerHour.length; i++){
             tableStoreRow.appendChild(createDataCell(this.simulatedCookiesPerHour[i], 'td'));
         }
@@ -133,6 +149,7 @@
         const newStore = new CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
         cookieStoreLocations.push(newStore);
         addNewStore(newStore);
+        localStorage.cookieStoreLocations = JSON.stringify(cookieStoreLocations);
         form.querySelector('input[type="submit"]').disabled = true;
         Array.from(form.querySelectorAll('input:NOT([value="Enter store"])')).forEach(input => input.value = '');
     }
@@ -176,5 +193,8 @@
     form.addEventListener('keyup', allInputsCompleted);
     document.querySelector('input[id=\'store-name\']').addEventListener('change', newStoreNameInputValidation);
     createStoreTableContents();
+    if(!localStorage.cookieStoreLocations){
+        localStorage.cookieStoreLocations = JSON.stringify(cookieStoreLocations);
+    }
 
 })();
