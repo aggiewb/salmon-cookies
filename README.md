@@ -1,5 +1,5 @@
 # salmon-cookies
-To add to this project, fork the repo, run npm i, and open any subsequent pull requests with corresponding issue to the staging branch. The pull request must pass the automated linter and must flag Aggiewb for review.
+To add to this project, fork the repo, run npm i, and open any subsequent pull requests with corresponding issue to the staging branch. The pull request must pass the automated linter and must flag aggiewb for review.
 
 ## Branch Naming Guide
 ### For feature branches
